@@ -16,7 +16,7 @@ const CustomButton = ({onPress, text, type="PRIMARY", bgColor, fgColor}) =>{
                 fgColor ? {color : fgColor} : {},
                 ]}>
                     {text}
-                    </Text>
+            </Text>
         </Pressable>
     )
 }
@@ -25,7 +25,7 @@ const Styles = StyleSheet.create({
         width:'100%',
         
         padding:15,
-        marginVertical:20,
+        marginVertical:5,
 
         alignItems:'center',
         borderRadius:5,
@@ -37,6 +37,18 @@ const Styles = StyleSheet.create({
     text:{
         fontWeight: 'bold',
         color:'white',
+    },
+    container_SECONDARY:{
+        borderColor:'#3b71f3',
+        borderWidth:2,
+
+    },
+    text:{
+        fontWeight: 'bold',
+        color:'white',
+    },
+    text_SECONDARY:{
+        color:'#3b71f3',
     },
     text_TERTIARY:{
         color:'gray',

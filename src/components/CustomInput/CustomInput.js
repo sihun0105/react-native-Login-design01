@@ -26,7 +26,7 @@ const CustomInput =({Value, setValue,placeholder,secureTextEntry}) => {
             borderRadius:5,
 
             paddingHorizontal: 10,
-            marginVertical: 10,
+            marginVertical: 5,
         },
         input:{},
     });

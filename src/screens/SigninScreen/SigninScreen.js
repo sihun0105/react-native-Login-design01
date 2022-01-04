@@ -3,6 +3,7 @@ import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView} from 're
 import Logo from '../../../assets/images/download.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 
 const SigninScreen =() => {
     const {username,setUsername} = useState('');
@@ -15,15 +16,6 @@ const SigninScreen =() => {
     };
     const onForgotpasswordpress = () => {
         console.warn("Forgot password");
-    };
-    const onSigninApple = () => {
-        console.warn("Sign in Apple");
-    };
-    const onSigninGoogle = () => {
-        console.warn("Sign in Google");
-    };
-    const onSigninFaceBook = () => {
-        console.warn("Sign in Facebook");
     };
     const onSignUppress = () => {
         console.warn("onSignUpPress");
@@ -58,24 +50,7 @@ const SigninScreen =() => {
             text={'Forgot password'}
             type="TERTIARY"
             />
-            <CustomButton
-            onPress={onSigninFaceBook}
-            text={'Sign in with Facebook'}
-            bgColor="#e7eaf4"
-            fgColor="#4765a9"
-            />
-            <CustomButton
-            onPress={onSigninGoogle}
-            text={'Sign in with Google'}
-            bgColor="#fae9ea"
-            fgColor="#dd4d44"
-            />
-            <CustomButton
-            onPress={onSigninApple}
-            text={'Sign in with Apple'}
-            bgColor="#e3e3e3"
-            fgColor="#363636"
-            />
+           <SocialSigninButton></SocialSigninButton>
             <CustomButton
             onPress={onSignUppress}
             text={"Don't have an account? Create one"}
