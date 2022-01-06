@@ -11,6 +11,7 @@ import {SafeAreaView, StyleSheet, Text} from 'react-native';
 
 import Navigation from './src/navigation';
 
+
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>

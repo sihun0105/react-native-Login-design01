@@ -3,18 +3,22 @@ import {View , Text , StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
+import {useNavigation} from '@react-navigation/native';
 
 const ConfirmEmailScreen =() => {
     const {code,setCode} = useState('');
-
+    const navigation=useNavigation();
     const onConfirmpressed = () => {
         console.warn("onConfirmpressed");
+        navigation.navigate('HomeScreen');
     };
     const onResendpress = () => {
         console.warn("onResendpress");
     };
     const onSignInpress = () => {
         console.warn("onSignInpress");
+        navigation.navigate('Signin');
+
     };
 
     return(

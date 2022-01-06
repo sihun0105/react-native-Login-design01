@@ -4,21 +4,25 @@ import Logo from '../../../assets/images/download.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
+import {useNavigation} from '@react-navigation/native';
 
 const SigninScreen =() => {
     const {username,setUsername} = useState('');
     const {password,setPassword} = useState('');
-
+    const navigation = useNavigation();
     const {height} = useWindowDimensions();
 
     const onSignInPressed = () => {
         console.warn("Sign in");
+        navigation.navigate('HomeScreen');
     };
     const onForgotpasswordpress = () => {
         console.warn("Forgot password");
+        navigation.navigate('ForgotPassword');
     };
     const onSignUppress = () => {
         console.warn("onSignUpPress");
+        navigation.navigate('SignUp');
     };
 
     return(
