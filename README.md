@@ -1,7 +1,7 @@
 # react-native Login design
  study by https://www.youtube.com/watch?v=ALnJLbjI7EY
 
-#Installation
+#Installation<br/>
 Using npm: npm install @react-navigation/native<br/>
 npm install @react-navigation/stack
 
