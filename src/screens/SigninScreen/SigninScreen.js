@@ -1,11 +1,10 @@
 import React,{useState} from 'react'
 import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView} from 'react-native';
-import Logo from '../../../assets/images/download.png';
+import Logo from '../../../assets/images/bcu.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
-
 const SigninScreen =() => {
     const {username,setUsername} = useState('');
     const {password,setPassword} = useState('');
@@ -13,15 +12,12 @@ const SigninScreen =() => {
     const {height} = useWindowDimensions();
 
     const onSignInPressed = () => {
-        console.warn("Sign in");
-        navigation.navigate('HomeScreen');
+        navigation.navigate('AppNavigator');
     };
     const onForgotpasswordpress = () => {
-        console.warn("Forgot password");
         navigation.navigate('ForgotPassword');
     };
     const onSignUppress = () => {
-        console.warn("onSignUpPress");
         navigation.navigate('SignUp');
     };
 
@@ -47,11 +43,11 @@ const SigninScreen =() => {
              />
             <CustomButton
             onPress={onSignInPressed}
-            text={'Sign in'}
+            text={'로그인'}
             />
             <CustomButton
             onPress={onForgotpasswordpress}
-            text={'Forgot password'}
+            text={'비밀번호 찾기'}
             type="TERTIARY"
             />
            <SocialSigninButton></SocialSigninButton>
@@ -69,6 +65,7 @@ const SigninScreen =() => {
         root:{
             alignItems : 'center',
             padding:20,
+            backgroundColor: '#ffe8d1',
         },
         Logo:{
             width : '70%',

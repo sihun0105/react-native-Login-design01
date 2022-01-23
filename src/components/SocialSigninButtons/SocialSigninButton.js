@@ -5,31 +5,31 @@ import CustomButton from '../CustomButton';
 
 const SocialSigninButton =() =>{
     const onSigninApple = () => {
-        console.warn("Sign in Apple");
+        console.warn("애플 로그인");
     };
     const onSigninGoogle = () => {
-        console.warn("Sign in Google");
+        console.warn("구글 로그인");
     };
     const onSigninFaceBook = () => {
-        console.warn("Sign in Facebook");
+        console.warn("페이스북 로그인");
     };
     return(
     <>
         <CustomButton
             onPress={onSigninFaceBook}
-            text={'Sign in with Facebook'}
+            text={'페이스북 로그인'}
             bgColor="#e7eaf4"
             fgColor="#4765a9"
             />
             <CustomButton
             onPress={onSigninGoogle}
-            text={'Sign in with Google'}
+            text={'구글 로그인'}
             bgColor="#fae9ea"
             fgColor="#dd4d44"
             />
             <CustomButton
             onPress={onSigninApple}
-            text={'Sign in with Apple'}
+            text={'애플 로그인'}
             bgColor="#e3e3e3"
             fgColor="#363636"
             />
