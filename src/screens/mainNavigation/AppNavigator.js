@@ -30,7 +30,7 @@ const AppNavigator = () => (
       component={HomeScreen}
       options={{
         tabBarIcon: ({size}) => (
-          <Foundation name="store" size={size} color={'#3d3d29'} />
+          <Foundation name="shopping-bag" size={size} color={'#3d3d29'} />
         ),
       }}
     />

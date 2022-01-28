@@ -24,7 +24,6 @@ const Navigation = () => {
                 <Stack.Screen name='NewPassword' component={NewPasswordScreen}/>
                 <Stack.Screen name='HomeScreen' component={HomeScreen}/>
                 <Stack.Screen name='AppNavigator' component={AppNavigator}/>
-                
             </Stack.Navigator>
         </NavigationContainer>
     );
