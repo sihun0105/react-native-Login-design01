@@ -7,19 +7,36 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  FlatList,
 } from 'react-native';
 import Logo from '../../../assets/images/bcu.png';
 
 const ProfileScreen = () => {
+  const logout = () => {
+    console.warn('logout test');
+    //navigation.navigate('AppNavigator');
+};
+const edit = () => {
+  console.warn('edit test');
+  //navigation.navigate('AppNavigator');
+};
+const follow = () => {
+  console.warn('follow test');
+  //navigation.navigate('AppNavigator');
+};
+const message = () => {
+  console.warn('message test');
+  //navigation.navigate('AppNavigator');
+};
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
         showsVerticalScrollIndicator={false}>
-        <Image
+        <Image style={styles.userImg}
             source={Logo}
-            resizeMode="contain"
+            //resizeMode="contain"
             />
         <Text style={styles.userName}>user name</Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
@@ -27,34 +44,41 @@ const ProfileScreen = () => {
         aboutuser
         </Text>
         <View style={styles.userBtnWrapper}>
-              <Text style={styles.userBtn} onPress={() => {}}>
+              <TouchableOpacity style={styles.userBtn} onPress={() => message()}>
                 <Text style={styles.userBtnTxt}>Message</Text>
-              </Text>
-              <Text style={styles.userBtn} onPress={() => {}}>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={styles.userBtn} onPress={() => follow()}>
                 <Text style={styles.userBtnTxt}>Follow</Text>
-              </Text>
+              </TouchableOpacity>
 
-              <Text style={styles.userBtn}>
+              <TouchableOpacity style={styles.userBtn} onPress={() => edit()}>
                 <Text style={styles.userBtnTxt}>Edit</Text>
-              </Text>
-              <Text style={styles.userBtn} onPress={() => logout()}>
+              </TouchableOpacity>
+              
+              <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
                 <Text style={styles.userBtnTxt}>Logout</Text>
-              </Text>
+              </TouchableOpacity>
         </View>
 
         <View style={styles.userInfoWrapper}>
+          
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoSubTitle}>Posts</Text>
           </View>
+          
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoTitle}>10,000</Text>
             <Text style={styles.userInfoSubTitle}>Followers</Text>
           </View>
+          
           <View style={styles.userInfoItem}>
             <Text style={styles.userInfoTitle}>100</Text>
             <Text style={styles.userInfoSubTitle}>Following</Text>
           </View>
+        
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -71,6 +95,9 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     borderRadius: 75,
+    borderWidth: 1,
+    borderColor: 'red',
+    backgroundColor: '#fff',
   },
   userName: {
     fontSize: 18,
