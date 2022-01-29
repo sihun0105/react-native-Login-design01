@@ -1,26 +1,28 @@
-import { View, Text,TouchableOpacity,StyleSheet,} from 'react-native';
+import { View, Text,TouchableOpacity,StyleSheet,Image } from 'react-native';
 import React from 'react';
 
-const Music = () => {
-    const onmusicinfoPressed = () => {
-        console.warn('음악 정보');
+const EditProfile = () => {
+    const onprofilePressed = () => {
+        console.warn('프로필 수정');
         //navigation.navigate('AppNavigator');
     };
     return (
     <View style={styles.container}>
-        <Text style={{fontSize:30}}>플레이 리스트</Text>
-        <TouchableOpacity style={styles.userBtn} onPress={() => onmusicinfoPressed()}>
-              <Text>현재 재생되고 있는 곡 정보</Text>
+        <TouchableOpacity onPress={() => onprofilePressed()}>
+              <Image style={styles.userImg} source={require('../../../assets/images/bcu.png')} />
         </TouchableOpacity>
-        <Text>재생/정지 버튼 볼륨조절</Text>
         <View style={styles.miniroom}>
-            <Text>BGM 편집 기능 추가/수정/삭제</Text>
+            <Text>이름 :</Text>
+            <Text>나이 :</Text>
+            <Text>성별 :</Text>
+            <Text>today 1512</Text>
+            <Text>오늘의 기분 : 좋아요</Text>
         </View>
     </View>
   );
 };
 
-export default Music;
+export default EditProfile;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -51,13 +53,5 @@ const styles = StyleSheet.create({
       paddingHorizontal: 12,
       borderWidth: 1,
       borderColor: 'green',
-    },
-    userBtn: {
-      borderColor: '#2e64e5',
-      borderWidth: 2,
-      borderRadius: 3,
-      paddingVertical: 8,
-      paddingHorizontal: 12,
-      marginHorizontal: 5,
     },
   });

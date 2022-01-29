@@ -3,8 +3,8 @@ import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import SearchScreen from '../../screens/SearchScreen/SearchScreen';
-import ReelsScreen from '../../screens/ReelsScreen/ReelsScreen';
-import ActivityScreen from '../../screens/ActivityScreen/ActivityScreen';
+import StoreScreen from '../StoreScreen/Store';
+import ChatScreen from '../ChatScreen/ChatScreen';
 import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
 
 import Foundation from 'react-native-vector-icons/Foundation';
@@ -18,19 +18,13 @@ const AppNavigator = () => (
   <Tab.Navigator tabBarOptions={{showLabel: true}} screenOptions={{headerShown: false}}>
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={ProfileScreen}
       options={{
         tabBarIcon: ({size}) => (
-          <Foundation name="home" size={size} color={'#3d3d29'} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Store"
-      component={HomeScreen}
-      options={{
-        tabBarIcon: ({size}) => (
-          <Foundation name="shopping-bag" size={size} color={'#3d3d29'} />
+          <Image
+            source={require('../../../assets/images/splash.png')}
+            style={{width: 30, height: 30, borderRadius: 15}}
+          />
         ),
       }}
     />
@@ -44,8 +38,17 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Reels"
-      component={ReelsScreen}
+      name="SNS"
+      component={HomeScreen}
+      options={{
+        tabBarIcon: ({size}) => (
+          <Foundation name="shopping-bag" size={size} color={'#3d3d29'} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="CHAT"
+      component={ChatScreen}
       options={{
         tabBarIcon: ({size}) => (
           <MaterialCommunityIcons
@@ -57,8 +60,8 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Activity"
-      component={ActivityScreen}
+      name="STORE"
+      component={StoreScreen}
       options={{
         tabBarIcon: ({size}) => (
           <AntDesign name="hearto" size={size} color={'#3d3d29'} />
@@ -66,13 +69,14 @@ const AppNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Profile"
+      name="SETTING"
       component={ProfileScreen}
       options={{
         tabBarIcon: ({size}) => (
-          <Image
-            source={require('../../../assets/images/splash.png')}
-            style={{width: 30, height: 30, borderRadius: 15}}
+          <MaterialCommunityIcons
+            name="server"
+            size={size}
+            color={'#3d3d29'}
           />
         ),
       }}

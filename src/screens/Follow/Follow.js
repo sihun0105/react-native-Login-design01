@@ -1,10 +1,10 @@
 import { View, Text,TouchableOpacity,StyleSheet,} from 'react-native';
 import React from 'react';
 
-const Diary = () => {
+const Follow = () => {
     return (
     <View style={styles.container}>
-        <Text style={{fontSize:30}}>다이어리</Text>
+        <Text style={{fontSize:30}}>Follow 관리</Text>
         <View style={styles.title}>
           <Text style={{flex:1,textAlign: 'center',borderColor:'red',borderWidth:1}}>이름</Text>
           <Text style={{flex:1,textAlign: 'center',borderColor:'red',borderWidth:1}}>별명</Text>
@@ -18,7 +18,7 @@ const Diary = () => {
   );
 };
 
-export default Diary;
+export default Follow;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
