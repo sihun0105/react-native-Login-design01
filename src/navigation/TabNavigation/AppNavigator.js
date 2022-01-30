@@ -3,8 +3,8 @@ import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../screens/HomeScreen/HomeScreen';
 import SearchScreen from '../../screens/SearchScreen/SearchScreen';
-import StoreScreen from '../StoreScreen/Store';
-import ChatScreen from '../ChatScreen/ChatScreen';
+import StoreScreen from '../../screens/StoreScreen/Store';
+import ChatList from '../../screens/ChatList/ChatList';
 import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
 
 import Foundation from 'react-native-vector-icons/Foundation';
@@ -48,7 +48,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="CHAT"
-      component={ChatScreen}
+      component={ChatList}
       options={{
         tabBarIcon: ({size}) => (
           <MaterialCommunityIcons

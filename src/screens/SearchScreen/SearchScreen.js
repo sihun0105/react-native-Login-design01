@@ -1,22 +1,16 @@
+import { View, Text } from 'react-native';
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import AppText from '../../components/AppText';
-import Screen from '../../components/Screen';
-
-function SearchScreen(props) {
+import SearchBar from "react-native-dynamic-search-bar";
+const SearchScreen = () => {
   return (
-    <Screen style={styles.screen}>
-      <AppText>Search Screen</AppText>
-    </Screen>
+    <View>
+      <SearchBar
+  placeholder="Search here"
+  onPress={() => alert("onPress")}
+  onChangeText={(text) => console.log(text)}
+/>
+    </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: '#0066ff',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 export default SearchScreen;
