@@ -5,11 +5,7 @@ export default [
   {id: 4, name: 'Flinn', imageUrl: require('../../assets/images/splash.png')},
   {id: 5, name: 'Amey', imageUrl: require('../../assets/images/splash.png')},
   {id: 6, name: 'Amogh', imageUrl: require('../../assets/images/splash.png')},
-  {
-    id: 7,
-    name: 'Chandrakant',
-    imageUrl: require('../../assets/images/chandrakant.jpg'),
-  },
+  //{id: 7, name: 'Chandrakant',imageUrl: require('../../assets/images/splash.jpg')},
   {id: 8, name: 'Anush', imageUrl: require('../../assets/images/splash.png')},
   {id: 9, name: 'Rehaan', imageUrl: require('../../assets/images/splash.png')},
   {id: 10, name: 'Rishab', imageUrl: require('../../assets/images/splash.png')},
