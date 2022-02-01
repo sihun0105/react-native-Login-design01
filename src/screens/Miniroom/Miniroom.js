@@ -17,6 +17,9 @@ const Miniroom = () => {
     imageVar == (shose.length - 1) ? setImageVar(0) : setImageVar(imageVar + 1);
     console.log(shose[imageVar].image);
   }
+  const test=()=>{
+    imageVar == (hat.length - 1) ? setImageVar(0) : setImageVar(2);
+  }
   return (
     <View style={styles.container}>
         <Text style={{fontSize:30}}>미니룸</Text>
@@ -25,12 +28,21 @@ const Miniroom = () => {
         <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={hat[imageVar].imageUrl}/>
         <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={coat[imageVar].imageUrl}/>
         <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={shose[imageVar].imageUrl}/>
-        <Button onPress={(changehat,changecoat,changeshose)}
-          title="Change Pic" />
+        
       </View>
         
-        <View style={styles.miniroom}>
+        <View style={styles.miniroom} >
             <Text>보유한 아이템</Text>
+            <View style={{flexDirection:'row'}}>
+            <TouchableOpacity onPress={test}>
+            <Image style={{height: 70, width: 70,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={hat[0].imageUrl} />
+            </TouchableOpacity>
+            <Image style={{height: 70, width: 70,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={hat[1].imageUrl}/>
+            <Image style={{height: 70, width: 70,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={hat[2].imageUrl}/>
+
+            </View>
+            <Button onPress={(changehat,changecoat,changeshose)}
+          title="Change Pic" />
             <View style={{borderWidth:1,borderColor:'blue'}}></View>
         </View>
     </View>

@@ -6,11 +6,13 @@ import SearchScreen from '../../screens/SearchScreen/SearchScreen';
 import StoreScreen from '../../screens/StoreScreen/Store';
 import ChatList from '../../screens/ChatList/ChatList';
 import ProfileScreen from '../../screens/ProfileScreen/ProfileScreen';
-
 import Foundation from 'react-native-vector-icons/Foundation';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import SettingScreen from '../../screens/SettingScreen/SettingScreen';
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +72,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name="SETTING"
-      component={ProfileScreen}
+      component={SettingScreen}
       options={{
         tabBarIcon: ({size}) => (
           <MaterialCommunityIcons
@@ -82,6 +84,6 @@ const AppNavigator = () => (
       }}
     />
   </Tab.Navigator>
-);console.warn("test");
+);
 
 export default AppNavigator;
