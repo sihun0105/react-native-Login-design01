@@ -1,18 +1,26 @@
-import React,{useState} from 'react'
-import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView} from 'react-native';
+import React,{useCallback, useState} from 'react'
+import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView,Button} from 'react-native';
 import Logo from '../../../assets/images/bcu.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
 const SigninScreen =() => {
-    const {username,setUsername} = useState('');
-    const {password,setPassword} = useState('');
+    const [username,setUsername] = useState('');
+    const [password,setPassword] = useState('');
+    const onChangeName = useCallback(text => {
+        setUsername(text.trim());
+      }, []);
+
+      const onChangePassword = useCallback(text => {
+        setPassword(text.trim());
+      }, []);
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
-
+    
     const onSignInPressed = () => {
         navigation.navigate('AppNavigator');
+        //console.warn(username);
     };
     const onForgotpasswordpress = () => {
         navigation.navigate('ForgotPassword');
@@ -20,7 +28,7 @@ const SigninScreen =() => {
     const onSignUppress = () => {
         navigation.navigate('SignUp');
     };
-
+    const canGoNext = username && password;
     return(
         <ScrollView style={styles.scrollView}>
             <View style={styles.root}>
@@ -30,20 +38,23 @@ const SigninScreen =() => {
             resizeMode="contain"
             />
             <CustomInput
-             placeholder="Username"
+             placeholder="아이디를 입력해주세요."
              Value={username} 
              setValue={setUsername}
              secureTextEntry={false}
+             onChangeText={onChangeName}
              />
             <CustomInput
-             placeholder="Userpassword" 
+             placeholder="비밀번호를 입력해주세요." 
              Value={password} 
              setValue={setPassword}
              secureTextEntry={true}
+             onChangeText={onChangePassword}
              />
             <CustomButton
             onPress={onSignInPressed}
             text={'로그인'}
+            bgColor={canGoNext ? '#2e64e5' : 'grey'}
             />
             <CustomButton
             onPress={onForgotpasswordpress}
@@ -61,16 +72,25 @@ const SigninScreen =() => {
         );
     };
 
-    const styles = StyleSheet.create({
-        root:{
-            alignItems : 'center',
-            padding:20,
-            backgroundColor: '#ffe8d1',
-        },
-        Logo:{
-            width : '70%',
-            height : 200,
-        },
-
-    });
-    export default SigninScreen
+const styles = StyleSheet.create({
+    root:{
+        alignItems : 'center',
+        padding:20,
+        backgroundColor: '#ffe8d1',
+    },
+    Logo:{
+        width : '70%',
+        height : 200,
+    },
+    loginButton: {
+        backgroundColor: 'gray',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 5,
+        marginBottom: 10,
+      },
+      loginButtonActive: {
+        backgroundColor: 'blue',
+      },
+});
+export default SigninScreen

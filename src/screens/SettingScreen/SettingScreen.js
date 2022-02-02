@@ -1,126 +1,131 @@
 import React from 'react';
 import {
-  ScrollView,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Linking,
-  Switch,
-  Text,
+    ScrollView,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    Switch,
+    Text
 } from 'react-native';
 const SettingScreen = () => {
-  return (
-    <ScrollView >
-      <View >
-        <View
-          >
-          <Text >
-            PROFILE SETTINGS
-          </Text>
-        </View>
-        <View >
-          <TouchableOpacity >
-            <Text >
-              Edit Profile
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View >
-          <TouchableOpacity >
-            <Text >
-              Change Password
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View >
-          <Text >
-            Send Push Notifications
-          </Text>
-          <Switch
-          />
-          
-        </View>
-        <View >
-          <Text >
-            Refresh Automatically
-          </Text>
-    
-          <Switch
-          />
-        </View>
-      </View>
+    return (
+        <ScrollView >
+            <View >
+                <View style={styles.row}>
+                    <Text style={styles.title}>
+                        PROFILE SETTINGS
+                    </Text>
+                </View>
+                
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Edit Profile
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Change Password
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                
+                <View style={styles.row}>
+                    <Text style={styles.section}>
+                        Send Push Notifications
+                    </Text>
+                    <Switch/>
 
-      <View >
-        <View
-          >
-          <Text >
-            SUPPORT
-          </Text>
-        </View>
-        <View >
-          <TouchableOpacity >
-            <Text >
-              Help
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View >
-          <TouchableOpacity>
-            <Text >
-              Privacy Policy
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View >
-          <TouchableOpacity >
-            <Text >
-              Terms & Conditions
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View >
-          <TouchableOpacity >
-            <Text >
-              Logout
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
-  );
+                </View>
+                
+                <View style={styles.row}>
+                    <Text style={styles.section}>
+                        Refresh Automatically
+                    </Text>
+
+                    <Switch/>
+                </View>
+            </View>
+
+            <View >
+                <View style={styles.row}>
+                    <Text style={styles.title}>
+                      고객관리
+                    </Text>
+                </View>
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Help
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Privacy Policy
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Terms & Conditions
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.row}>
+                    <TouchableOpacity style={styles.section}>
+                        <Text >
+                            Logout
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ScrollView>
+    );
 };
 
 export default SettingScreen;
 
 const styles = StyleSheet.create({
-    container: {
+  title:{
+      marginVertical: 25,
+      fontSize:20,
+      fontWeight:'bold',
+  },  
+  container: {
         backgroundColor: 'black'
-      },
-      header: {
-        paddingVertical: 25,
-      },
-      section: {
-        marginVertical: 25,
-      },
-      heading: {
-        paddingBottom: 12.5,
-      },
-      row: {
+    },
+    header: {
+        paddingVertical: 25
+    },
+    section: {
+        marginVertical: 25
+    },
+    heading: {
+        paddingBottom: 12.5
+    },
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 17.5,
-        borderBottomWidth: 1,
+        borderBottomWidth: StyleSheet.hairlineWidth,
         borderColor: 'black',
-        alignItems: 'center',
-      },
-      rowButton: {
+        alignItems: 'center'
+    },
+    rowButton: {
         flex: 1,
-        paddingVertical: 24,
-      },
-      switch: {
-        marginVertical: 14,
-      },
-      text: {
-        color: 'black',
-      },
-  });
+        paddingVertical: 24
+    },
+    switch : {
+            marginVertical:
+            14
+    },
+    text: {
+        color: 'black'
+    }
+});
