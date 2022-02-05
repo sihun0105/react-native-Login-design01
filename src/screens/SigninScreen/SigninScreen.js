@@ -1,13 +1,22 @@
-import React,{useCallback, useState} from 'react'
-import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView,Button} from 'react-native';
+import React,{useCallback, useState,useRef} from 'react'
+import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView,Button,Alert,TextInput} from 'react-native';
 import Logo from '../../../assets/images/bcu.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
+
+
 const SigninScreen =() => {
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
+    const onSubmit = () => {
+        Alert.alert('알림', '로그인 성공');
+        navigation.navigate('AppNavigator');
+        //console.warn(username);
+    };
     const onChangeName = useCallback(text => {
         setUsername(text.trim());
       }, []);
@@ -18,10 +27,6 @@ const SigninScreen =() => {
     const navigation = useNavigation();
     const {height} = useWindowDimensions();
     
-    const onSignInPressed = () => {
-        navigation.navigate('AppNavigator');
-        //console.warn(username);
-    };
     const onForgotpasswordpress = () => {
         navigation.navigate('ForgotPassword');
     };
@@ -37,22 +42,38 @@ const SigninScreen =() => {
             style={[styles.Logo,{height: height*0.3}]}
             resizeMode="contain"
             />
-            <CustomInput
-             placeholder="아이디를 입력해주세요."
-             Value={username} 
-             setValue={setUsername}
-             secureTextEntry={false}
-             onChangeText={onChangeName}
-             />
-            <CustomInput
-             placeholder="비밀번호를 입력해주세요." 
-             Value={password} 
-             setValue={setPassword}
-             secureTextEntry={true}
-             onChangeText={onChangePassword}
-             />
+            <TextInput
+          style={styles.container}
+          onChangeText={onChangeName}
+          placeholder="아이디를 입력해주세요."
+          placeholderTextColor="#666"
+          importantForAutofill="yes"
+          autoComplete="email"
+          textContentType="emailAddress"
+          value={username}
+          returnKeyType="next"
+          clearButtonMode="while-editing"
+          ref={usernameRef}
+          onSubmitEditing={() => passwordRef.current?.focus()}
+          blurOnSubmit={false}
+        />
+        <TextInput
+          style={styles.container}
+          placeholder="비밀번호를 입력해주세요(영문,숫자,특수문자)"
+          placeholderTextColor="#666"
+          importantForAutofill="yes"
+          onChangeText={onChangePassword}
+          value={password}
+          autoComplete="password"
+          textContentType="password"
+          secureTextEntry
+          returnKeyType="send"
+          clearButtonMode="while-editing"
+          ref={passwordRef}
+          onSubmitEditing={onSubmit}
+        />
             <CustomButton
-            onPress={onSignInPressed}
+            onPress={onSubmit}
             text={'로그인'}
             bgColor={canGoNext ? '#2e64e5' : 'grey'}
             />
@@ -73,6 +94,17 @@ const SigninScreen =() => {
     };
 
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor:'white',
+        width : '100%',
+
+        borderColor:'#e8e8e8',
+        borderWidth:1,
+        borderRadius:5,
+
+        paddingHorizontal: 10,
+        marginVertical: 5,
+    },
     root:{
         alignItems : 'center',
         padding:20,
@@ -91,6 +123,10 @@ const styles = StyleSheet.create({
       },
       loginButtonActive: {
         backgroundColor: 'blue',
+      },
+      textInput: {
+        padding: 5,
+        borderBottomWidth: StyleSheet.hairlineWidth,
       },
 });
 export default SigninScreen
