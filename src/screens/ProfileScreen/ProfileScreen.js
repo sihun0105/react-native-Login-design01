@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
+
+
 const ProfileScreen = () => {
   const navigation = useNavigation();
   
@@ -26,9 +28,7 @@ const onEditFriendPressed = () => {
   const onweblogpress = () => {
     navigation.navigate('Weblog');
 };
-const onSNSpress = () => {
-    navigation.navigate('HomeScreen');
-};
+
 const onDiarypress = () => {
   navigation.navigate('Diary');
 };
@@ -41,6 +41,8 @@ const onFollowpress = () => {
 const onMiniroompress = () => {
   navigation.navigate('Miniroom');
 };
+
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={styles.title}>
@@ -103,10 +105,6 @@ const onMiniroompress = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.userBtnWrapper}>
-              <TouchableOpacity style={styles.userBtn} onPress={() => onSNSpress()}>
-                <Text style={styles.userBtnTxt}>sns게시글</Text>
-              </TouchableOpacity>
-              
               <TouchableOpacity style={styles.userBtn} onPress={() => onDiarypress()}>
                 <Text style={styles.userBtnTxt}>다이어리</Text>
               </TouchableOpacity>

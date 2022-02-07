@@ -65,7 +65,7 @@ const SignUpScreen =() => {
           });
           console.log(response.data);
           Alert.alert('알림', '회원가입 되었습니다.');
-          navigation.navigate('SignIn');
+          navigation.navigate('Signin');
         } catch (error) {
           const errorResponse = (error).response;
           console.error(errorResponse);
@@ -129,7 +129,7 @@ const SignUpScreen =() => {
 
             
             <CustomButton
-            onPress={onSignInpress}
+            onPress={onRegisterpress}
             text={"have an account? Sign in"}
             type="TERTIARY"
             />

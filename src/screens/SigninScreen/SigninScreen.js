@@ -1,31 +1,68 @@
 import React,{useCallback, useState,useRef} from 'react'
-import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView,Button,Alert,TextInput} from 'react-native';
+import {View , Text ,Image, StyleSheet, useWindowDimensions,ScrollView,Button,Alert,TextInput,loading, Pressable, ActivityIndicator,} from 'react-native';
 import Logo from '../../../assets/images/bcu.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
+import EncryptedStorage from 'react-native-encrypted-storage';
+import axios from 'axios'; // {axioserror}뺌 js이기떄문에~ 나중에 ts넘어가서 에러 잡을꺼면 넣어야댐
+import Config from 'react-native-config';
+import {useAppDispatch} from '../../../store';
+import userSlice from '../../../slices/user';
 
 
 const SigninScreen =() => {
-    const [username,setUsername] = useState('');
-    const [password,setPassword] = useState('');
-    const usernameRef = useRef(null);
-    const passwordRef = useRef(null);
-    const onSubmit = () => {
-        Alert.alert('알림', '로그인 성공');
-        navigation.navigate('AppNavigator');
-        //console.warn(username);
-    };
-    const onChangeName = useCallback(text => {
-        setUsername(text.trim());
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const navigation = useNavigation(); 
+  const {height} = useWindowDimensions();
+  const dispatch = useAppDispatch();  
+  
+  const onSubmit = useCallback(async () => {
+    if (loading) {
+        return;
+    }
+    if (!email || !email.trim()) {
+        return Alert.alert('알림', '이메일을 입력해주세요.');
+    }
+    if (!password || !password.trim()) {
+        return Alert.alert('알림', '비밀번호를 입력해주세요.');
+    }
+    try {
+        setLoading(true);
+        const response = await axios.post(`${Config.API_URL}/login`, {email, password});
+        console.log(response.data);
+        Alert.alert('알림', '로그인 되었습니다.');
+        dispatch(
+            userSlice.actions.setUser({name: response.data.data.name, email: response.data.data.email, accessToken: response.data.data.accessToken}),
+        );
+        await EncryptedStorage.setItem(
+            'refreshToken',
+            response.data.data.refreshToken,
+        );
+    } catch (error) {
+        const errorResponse = (error).response;
+        if (errorResponse) {
+            Alert.alert('알림', errorResponse.data.message);
+        }
+    } finally {
+        setLoading(false);
+    }
+}, [loading, dispatch, email, password]);
+
+    const onChangeEmail = useCallback(text => {
+        setEmail(text.trim());
       }, []);
 
       const onChangePassword = useCallback(text => {
         setPassword(text.trim());
       }, []);
-    const navigation = useNavigation();
-    const {height} = useWindowDimensions();
+
+
     
     const onForgotpasswordpress = () => {
         navigation.navigate('ForgotPassword');
@@ -33,7 +70,10 @@ const SigninScreen =() => {
     const onSignUppress = () => {
         navigation.navigate('SignUp');
     };
-    const canGoNext = username && password;
+    
+    const canGoNext = email && password;
+    
+    
     return(
         <ScrollView style={styles.scrollView}>
             <View style={styles.root}>
@@ -44,16 +84,16 @@ const SigninScreen =() => {
             />
             <TextInput
           style={styles.container}
-          onChangeText={onChangeName}
+          onChangeText={onChangeEmail}
           placeholder="아이디를 입력해주세요."
           placeholderTextColor="#666"
           importantForAutofill="yes"
           autoComplete="email"
           textContentType="emailAddress"
-          value={username}
+          value={email}
           returnKeyType="next"
           clearButtonMode="while-editing"
-          ref={usernameRef}
+          ref={emailRef}
           onSubmitEditing={() => passwordRef.current?.focus()}
           blurOnSubmit={false}
         />
