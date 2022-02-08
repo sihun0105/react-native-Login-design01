@@ -76,7 +76,7 @@ const verifyRefreshToken = (req, res, next) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("ok");
+  res.send("testok",res.locals.email);
 });
 app.post("/refreshToken", verifyRefreshToken, (req, res, next) => {
   const accessToken = jwt.sign(
