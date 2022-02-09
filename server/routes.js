@@ -8,15 +8,24 @@ var connection = mysql.createPool({
     port : '3306',
     user : "root", //mysql의 id
     password : "5559", //mysql의 password
-    database : "tistory", //사용할 데이터베이스
+    database : "sihun", //사용할 데이터베이스
     //acquireTimeout:6000000
 });
 // We're still in routes.js! Right below everything else.
-
 // Starting our app.
 const app = express();
 app.get('/', function(req, res){
     res.send('Hello World');
+});
+app.get('/sihun', function(req, res){
+    res.send('Hello World');
+    connection.query('SELECT * FROM test', function (error, results, fields) {
+        // If some error occurs, we throw an error.
+            if (error) throw error;
+            // Getting the 'response' from the database and sending it to our route. This is were the data is.
+            //res.send(results);
+            console.log(results,error,fields);
+    });
 });
 
 // Creating a GET route that returns data from the 'users' table.
@@ -42,7 +51,7 @@ app.get("/idplz", (req,res)=>{
     //const test = req.body.test;
     // console.log(req.body);
     connection.query('SELECT * FROM test', function (error, results, fields) {
-        if(err){
+        if(error){
             console.log("실패");
             // console.log(err);
         }else{
