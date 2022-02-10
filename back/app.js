@@ -1,3 +1,4 @@
+
 // **절대 실무용으로 사용하지 마세요. 강좌를 위한 백엔드 더미 구현입니다.** //
 const fs = require("fs");
 const path = require("path");
@@ -24,6 +25,45 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const bodyParser = require("body-parser");
+const mysql = require("mysql"); // mysql 모듈 사용
+//const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
+
+var connection = mysql.createPool({
+  host : "localhost",
+  port : '3306',
+  user : "root", //mysql의 id
+  password : "5559", //mysql의 password
+  database : "sihun", //사용할 데이터베이스
+  //acquireTimeout:6000000
+});
+app.get('/', function(req, res){
+    res.send('Hello World');
+});
+app.get('/sihun', function(req, res){
+  //res.send('Hello World');
+  connection.query('SELECT * FROM test', function (error, results, fields) {
+      // If some error occurs, we throw an error.
+          if (error) throw error;
+          // Getting the 'response' from the database and sending it to our route. This is were the data is.
+          //res.send(results);
+          res.send(results);
+          console.log(results[0].ID);
+  });
+});
+app.get("/idplz", (req,res)=>{
+  //const test = req.body.test;
+  // console.log(req.body);
+  connection.query('SELECT * FROM test', function (error, results, fields) {
+      if(error){
+          console.log("실패");
+          // console.log(err);
+      }else{
+          console.log("성공");
+          // console.log(rows);
+      };
+  });
+});
 const jwtSecret = "JWT_SECRET";
 const users = {};
 

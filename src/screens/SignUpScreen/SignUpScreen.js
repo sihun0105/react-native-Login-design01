@@ -24,11 +24,6 @@ const SignUpScreen =() => {
     const onPrivacyPressed = () => {
         console.warn("onPrivacyPressed");
     };
-    const onSignInpress = () => {
-        console.warn(username);
-        //navigation.navigate('Signin');
-
-    };
     const onSubmit = useCallback(async () => {
         if (loading) {
           return;
@@ -41,6 +36,9 @@ const SignUpScreen =() => {
         }
         if (!password || !password.trim()) {
           return Alert.alert('알림', '비밀번호를 입력해주세요.');
+        }
+        if (!password == !passwordRepeat.trim()) {
+          return Alert.alert('알림', '비밀번호가 같지않습니다.');
         }
         if (
           !/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
@@ -76,7 +74,8 @@ const SignUpScreen =() => {
           setLoading(false);
         }
       }, [loading, navigation, email, username, password]);
-      const canGoNext = email && username && password;
+      
+      const canGoNext = email && username && password && passwordRepeat;
     
     return(
         <ScrollView style={styles.scrollView}>

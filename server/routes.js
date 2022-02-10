@@ -1,7 +1,7 @@
 const express = require("express"); 
 const bodyParser = require("body-parser");
 const mysql = require("mysql"); // mysql 모듈 사용
-const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
+//const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
 
 var connection = mysql.createPool({
     host : "localhost",
@@ -37,6 +37,7 @@ app.get('/users', function (req, res) {
             throw err;
         }
         connection.query('SELECT * FROM test', function (error, results, fields) {
+            res.send(results);
         // If some error occurs, we throw an error.
             if (error) throw error;
 
