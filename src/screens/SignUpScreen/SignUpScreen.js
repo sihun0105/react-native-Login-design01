@@ -33,7 +33,7 @@ const SignUpScreen =() => {
         }
         if (!username || !username.trim()) {
           return Alert.alert('알림', '이름을 입력해주세요.');
-        }
+        } 
         if (!password || !password.trim()) {
           return Alert.alert('알림', '비밀번호를 입력해주세요.');
         }
