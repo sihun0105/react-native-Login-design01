@@ -42,6 +42,7 @@ app.get('/', function(req, res){
 });
 app.get('/sihun', function(req, res){
   //res.send('Hello World');
+  //state.user.accessToken
   connection.query('SELECT * FROM test', function (error, results, fields) {
       // If some error occurs, we throw an error.
           if (error) throw error;
