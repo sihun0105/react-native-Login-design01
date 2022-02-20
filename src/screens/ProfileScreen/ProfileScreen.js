@@ -40,7 +40,7 @@ const onFollowpress = () => {
 };
 const onMiniroompress = () => {
   navigation.navigate('Miniroom');
-};
+}; 
 
 
   return (

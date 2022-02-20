@@ -4,7 +4,7 @@ import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
-import Config from 'react-native-config';
+import Config from 'react-native-config'; 
 
 const SignUpScreen =() => {
     const [loading, setLoading] = useState(false);

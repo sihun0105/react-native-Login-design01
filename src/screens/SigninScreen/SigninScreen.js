@@ -9,7 +9,7 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import axios from 'axios'; // {axioserror}뺌 js이기떄문에~ 나중에 ts넘어가서 에러 잡을꺼면 넣어야댐
 import Config from 'react-native-config';
 import {useAppDispatch} from '../../../store';
-import userSlice from '../../../slices/user';
+import userSlice from '../../../slices/user'; 
 
 
 const SigninScreen =() => {
