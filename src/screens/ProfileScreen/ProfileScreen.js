@@ -47,9 +47,11 @@ const ProfileScreen = () => {
           <Text style={styles.musicBar}>music</Text>
         </View>
       </TouchableOpacity>
+
       <View style={styles.title}>
         <Text style={styles.titleText}>ooo님의 미니홈피</Text>
       </View>
+      <View style={styles.divider}></View>
       <ScrollView
         style={styles.container}
         contentContainerStyle={{
@@ -58,7 +60,7 @@ const ProfileScreen = () => {
           // borderWidth: 1,
           // borderColor: 'blue',
         }}
-        showsVerticalScrollIndicator={true}>
+        showsVerticalScrollIndicator={false}>
         <View style={styles.titlecontainer}>
           <View style={styles.leftcontainer}>
             <Image
@@ -147,14 +149,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row', // 혹은 'column'
   },
   leftcontainer: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 0.4,
     alignItems: 'center',
     // borderWidth: 1,
     // borderColor: 'red',
   },
   rightcontainer: {
-    flex: 1,
+    flex: 0.6,
+    margin: 10,
     // borderWidth: 1,
     // borderColor: 'red',
   },
@@ -184,26 +186,23 @@ const styles = StyleSheet.create({
     // borderColor: 'red',
   },
   titleText: {
-    padding: 20,
+    padding: 10,
     fontSize: 20,
     // borderWidth: 1,
     // borderColor: 'red',
   },
   userImg: {
-    height: 130,
-    width: 130,
-    borderRadius: 75,
+    width: 100,
+    height: 100,
     backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
     // borderWidth: 1,
+    margin: 10,
     // borderColor: 'red',
   },
   userName: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
-    marginBottom: 10,
+    textAlign: 'center',
     // borderWidth: 1,
     // borderColor: 'red',
   },
@@ -211,11 +210,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     color: '#666',
-    textAlign: 'center',
-    marginBottom: 10,
-    // borderWidth: 1,
     textDecorationLine: 'underline',
-    // borderColor: 'red',
   },
   userBtnWrapper: {
     flexDirection: 'row',
