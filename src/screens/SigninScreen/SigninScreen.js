@@ -45,6 +45,7 @@ const SigninScreen = () => {
       return Alert.alert('알림', '비밀번호를 입력해주세요.');
     }
     try {
+
       setLoading(true);
       const response = await axios.post(`${Config.API_URL}/login`, {
         email,
@@ -63,6 +64,22 @@ const SigninScreen = () => {
         'refreshToken',
         response.data.data.refreshToken,
       );
+
+        setLoading(true);
+        const response = await axios.post(`${Config.API_URL}/login`, {email, password});
+        console.log(response.data);
+        Alert.alert('알림', '로그인 되었습니다.');
+        dispatch(
+            userSlice.actions.setUser({
+                name: response.data.data.name,
+                email: response.data.data.email,
+                accessToken: response.data.data.accessToken}),
+        );
+        await EncryptedStorage.setItem(
+            'refreshToken',
+            response.data.data.refreshToken,
+        );
+
     } catch (error) {
       const errorResponse = error.response;
       if (errorResponse) {
