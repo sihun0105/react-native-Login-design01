@@ -1,7 +1,14 @@
 import { View, Text,TouchableOpacity,StyleSheet,FlatList,Image} from 'react-native';
 import React,{useState} from 'react';
-import Posts from '../../components/posts/Posts';
-import UserPosts from '../../data/posts';
+import 'react-native-gesture-handler';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import toolStore from '../../screens/StoreScreen/toolStore';
+import minimeStore from '../../screens/StoreScreen/minimeStore';
+import musicStore from '../../screens/StoreScreen/musicStore';
+
+const Tab = createMaterialTopTabNavigator();
+
 function renderItem({item}){
   return <Image
   source={{uri:item}}
@@ -12,21 +19,11 @@ const imageArr = new Array(20).fill("https://t1.daumcdn.net/cfile/tistory/1834CF
 const Store = () => { 
   const [images, setImages] =useState(imageArr);
   return (
-    <View style={styles.container}>
-        <Text style={{fontSize:30}}>상점</Text>
-        <View style={{flexDirection:'row',borderColor:'red',borderWidth:1,width:'100%'}}>
-        <Text style={{flex:1,textAlign:'center'}}>미니룸</Text>
-        <Text style={{flex:1,textAlign:'center'}}>미니미</Text>
-        <Text style={{flex:1,textAlign:'center'}}>BGM</Text>
-        </View>
-        <View style={styles.title}>
-        <FlatList style={styles.FlatList}
-        data={images}
-        renderItem={renderItem}
-        numColumns={2}
-      />
-      </View>
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="가구" component={toolStore} />
+      <Tab.Screen name="미니미" component={minimeStore} />
+      <Tab.Screen name="음악" component={musicStore} />
+    </Tab.Navigator>
   );
 };
 
