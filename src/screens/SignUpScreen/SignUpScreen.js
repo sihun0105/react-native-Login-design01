@@ -1,6 +1,5 @@
-import React,{useState,useCallback} from 'react'
-import {View , Text , StyleSheet, ScrollView,Pressable,Alert,ActivityIndicator} from 'react-native';
-import CustomInput from '../../components/CustomInput';
+import React,{useState,useCallback,useRef} from 'react'
+import {View , Text , StyleSheet, ScrollView,Pressable,Alert,ActivityIndicator,TextInput} from 'react-native';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
 import {useNavigation} from '@react-navigation/native';
@@ -13,6 +12,26 @@ const SignUpScreen =() => {
     const [password,setPassword] = useState('');
     const [email,setEmail] = useState('');
     const [passwordRepeat,setPasswordRepeat] = useState('');
+    
+    const usernameRef = useRef(null);
+    const passwordRef = useRef(null);
+    const emailRef = useRef(null);
+    const passwordRepeatRef = useRef(null);
+    
+    const onChangeuserName = useCallback(text => {
+      setUsername(text.trim());
+    }, []);
+
+    const onChangePassword = useCallback(text => {
+      setPassword(text.trim());
+    }, []);
+    const onChangeEmail = useCallback(text => {
+      setEmail(text.trim());
+    }, []);
+
+    const onChangePasswordRepeat = useCallback(text => {
+      setPasswordRepeat(text.trim());
+    }, []);
     const navigation=useNavigation();
     const onRegisterpress = () => {
         console.warn("OnRegisterpress");
@@ -77,33 +96,73 @@ const SignUpScreen =() => {
       
       const canGoNext = email && username && password && passwordRepeat;
     
+      
     return(
         <ScrollView style={styles.scrollView}>
             <View style={styles.root}>
             <Text style={styles.title}>회원가입</Text>
-            <CustomInput
-             placeholder="Username"
-             Value={username} 
-             setValue={setUsername}
-             secureTextEntry={false}
-             />
-            <CustomInput
-             placeholder="Useremail" 
-             Value={email} 
-             setValue={setEmail}
-             />
-             <CustomInput
-             placeholder="Userpassword" 
-             Value={password} 
-             setValue={setPassword}
-             secureTextEntry={true}
-             />
-             <CustomInput
-             placeholder="UserpasswordRepeat" 
-             Value={passwordRepeat} 
-             setValue={setPasswordRepeat}
-             secureTextEntry={true}
-             />
+            <TextInput
+              style={styles.container}
+              onChangeText={onChangeuserName}
+              placeholder="이름를 입력해주세요."
+              placeholderTextColor="#666"
+              importantForAutofill="yes"
+              //autoComplete=""
+              textContentType="emailAddress"
+              value={username}
+              returnKeyType="next"
+              clearButtonMode="while-editing"
+              ref={usernameRef}
+              onSubmitEditing={() => emailRef.current?.focus()}
+              blurOnSubmit={false}
+            />
+            <TextInput
+            style={styles.container}
+            onChangeText={onChangeEmail}
+            placeholder="이메일를 입력해주세요."
+            placeholderTextColor="#666"
+            importantForAutofill="yes"
+            autoComplete="email"
+            textContentType="emailAddress"
+            value={email}
+            returnKeyType="next"
+            clearButtonMode="while-editing"
+            ref={emailRef}
+            onSubmitEditing={() => passwordRef.current?.focus()}
+            blurOnSubmit={false}
+          />
+             <TextInput
+              style={styles.container}
+              onChangeText={onChangePassword}
+              placeholder="비밀번호를 입력해주세요."
+              placeholderTextColor="#666"
+              importantForAutofill="yes"
+              autoComplete="password"
+              textContentType="password"
+              secureTextEntry
+              value={password}
+              returnKeyType="next"
+              clearButtonMode="while-editing"
+              ref={passwordRef}
+              onSubmitEditing={() => passwordRepeatRef.current?.focus()}
+              blurOnSubmit={false}
+            />
+            <TextInput
+            style={styles.container}
+            onChangeText={onChangePasswordRepeat}
+            placeholder="비밀번호를 입력해주세요."
+            placeholderTextColor="#666"
+            importantForAutofill="yes"
+            autoComplete="password"
+            textContentType="password"
+            secureTextEntry
+            value={passwordRepeat}
+            returnKeyType="next"
+            clearButtonMode="while-editing"
+            ref={passwordRepeatRef}
+            onSubmitEditing={onSubmit}
+            blurOnSubmit={false}
+          />
              <View style={styles.buttonZone}>
         <Pressable
           style={
@@ -138,7 +197,18 @@ const SignUpScreen =() => {
     };
 
     const styles = StyleSheet.create({
-        root:{
+      container:{
+        backgroundColor:'white',
+        width : '100%',
+
+        borderColor:'#e8e8e8',
+        borderWidth:1,
+        borderRadius:5,
+
+        paddingHorizontal: 10,
+        marginVertical: 5,
+    },  
+      root:{
             alignItems : 'center',
             padding:20,
         },

@@ -38,7 +38,10 @@ const SigninScreen =() => {
         console.log(response.data);
         Alert.alert('알림', '로그인 되었습니다.');
         dispatch(
-            userSlice.actions.setUser({name: response.data.data.name, email: response.data.data.email, accessToken: response.data.data.accessToken}),
+            userSlice.actions.setUser({
+                name: response.data.data.name,
+                email: response.data.data.email,
+                accessToken: response.data.data.accessToken}),
         );
         await EncryptedStorage.setItem(
             'refreshToken',

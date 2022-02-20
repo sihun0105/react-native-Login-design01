@@ -25,11 +25,14 @@ const Miniroom = () => {
         <Text style={{fontSize:30}}>미니룸</Text>
       
         <View style={styles.miniroom}>
-        <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={hat[imageVar].imageUrl}/>
-        <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={coat[imageVar].imageUrl}/>
-        <Image style={{height: 100, width: 200,borderWidth:1,borderColor:'red',}} resizeMode="contain" source={shose[imageVar].imageUrl}/>
-        
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={hat[imageVar].imageUrl}/>
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={coat[imageVar].imageUrl}/>
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={shose[imageVar].imageUrl}/>
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={hat[imageVar].imageUrl}/>
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={coat[imageVar].imageUrl}/>
+        <Image style={{height: 100, width: 100,borderWidth:1,borderColor:'red',flex:1}} resizeMode="contain" source={shose[imageVar].imageUrl}/>
       </View>
+        
         
         <View style={styles.miniroom} >
             <Text>보유한 아이템</Text>
@@ -70,8 +73,8 @@ const styles = StyleSheet.create({
       justifyContent: 'space-around',
       alignItems:'center',
       marginTop: 30,
-      paddingVertical: 8,
-      paddingHorizontal: 12,
+      //paddingVertical: 8,
+      //paddingHorizontal: 12,
       borderWidth: 1,
       borderColor: 'green',
     },

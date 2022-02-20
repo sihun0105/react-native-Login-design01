@@ -9,6 +9,8 @@ const SocketIO = require("socket.io");
 const shortid = require("shortid");
 const multer = require("multer");
 const admin = require("firebase-admin");
+const mysql = require("mysql"); // mysql 모듈 사용
+
 
 let phoneToken;
 // process.env.GOOGLE_APPLICATION_CREDENTIALS =
@@ -26,23 +28,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const bodyParser = require("body-parser");
-const mysql = require("mysql"); // mysql 모듈 사용
 //const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
 
-var connection = mysql.createPool({
+const connection = mysql.createPool({
   host : "localhost",
   port : '3306',
   user : "root", //mysql의 id
-  password : "5559", //mysql의 password
+  password : "dkskdksk23A!", //mysql의 password
   database : "sihun", //사용할 데이터베이스
   //acquireTimeout:6000000
 });
-app.get('/', function(req, res){
-    res.send('Hello World');
-});
-app.get('/sihun', function(req, res){
-  //res.send('Hello World');
-  //state.user.accessToken
+
+app.get('/sihun', function(req, res,next){
   connection.query('SELECT * FROM test', function (error, results, fields) {
       // If some error occurs, we throw an error.
           if (error) throw error;
