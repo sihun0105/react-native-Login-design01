@@ -1,4 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import userSlice from '../../../slices/user';
+import { RootState } from '../../../store/reducer';
+
 import {
   View,
   Text,
@@ -10,17 +15,17 @@ import {
   FlatList,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
-
-
 const ProfileScreen = () => {
+  const email = useSelector((state: RootState) => state.user.email);
+  const name = useSelector((state: RootState) => state.user.name);
   const navigation = useNavigation();
   
   const onprofilePressed = () => {
     navigation.navigate('EditProfile');
 };
   const onMusicPressed = () => {
-  navigation.navigate('Music');
+  console.log(name);
+    navigation.navigate('Music');
 };
 const onEditFriendPressed = () => {
   navigation.navigate('Friend');
@@ -33,6 +38,7 @@ const onDiarypress = () => {
   navigation.navigate('Diary');
 };
 const onalbumpress = () => {
+  console.log({name});
   navigation.navigate('Album');
 };
 const onFollowpress = () => {
@@ -46,7 +52,7 @@ const onMiniroompress = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={styles.title}>
-        <Text style={styles.titleText}>ooo님의 미니홈피</Text>
+        <Text style={styles.titleText}>{name}님의 미니홈피</Text>
       </View>
       <TouchableOpacity onPress={() => onMusicPressed()}>
       <View style={styles.title}>
@@ -63,10 +69,10 @@ const onMiniroompress = () => {
             <TouchableOpacity onPress={() => onprofilePressed()}>
               <Image style={styles.userImg} source={require('../../../assets/images/bcu.png')} />
             </TouchableOpacity>
-          <Text style={styles.userName}>user name</Text>
+          <Text style={styles.userName}>{name}</Text>
           {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
           <Text style={styles.aboutUser}>
-          aboutuser
+          {email}
           </Text>
           </View>
           

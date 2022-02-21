@@ -8,18 +8,18 @@ import Config from 'react-native-config';
 
 const SignUpScreen =() => {
     const [loading, setLoading] = useState(false);
-    const [username,setUsername] = useState('');
+    const [name,setname] = useState('');
     const [password,setPassword] = useState('');
     const [email,setEmail] = useState('');
     const [passwordRepeat,setPasswordRepeat] = useState('');
     
-    const usernameRef = useRef(null);
+    const nameRef = useRef(null);
     const passwordRef = useRef(null);
     const emailRef = useRef(null);
     const passwordRepeatRef = useRef(null);
     
-    const onChangeuserName = useCallback(text => {
-      setUsername(text.trim());
+    const onChangename = useCallback(text => {
+      setname(text.trim());
     }, []);
 
     const onChangePassword = useCallback(text => {
@@ -50,7 +50,7 @@ const SignUpScreen =() => {
         if (!email || !email.trim()) {
           return Alert.alert('알림', '이메일을 입력해주세요.');
         }
-        if (!username || !username.trim()) {
+        if (!name || !name.trim()) {
           return Alert.alert('알림', '이름을 입력해주세요.');
         } 
         if (!password || !password.trim()) {
@@ -72,12 +72,12 @@ const SignUpScreen =() => {
             '비밀번호는 영문,숫자,특수문자($@^!%*#?&)를 모두 포함하여 8자 이상 입력해야합니다.',
           );
         }
-        console.log(email, username, password);
+        console.log(email, name, password);
         try {
           setLoading(true);
           const response = await axios.post(`${Config.API_URL}/user`, {
             email,
-            username,
+            name,
             password,
           });
           console.log(response.data);
@@ -92,9 +92,9 @@ const SignUpScreen =() => {
         } finally {
           setLoading(false);
         }
-      }, [loading, navigation, email, username, password]);
+      }, [loading, navigation, email, name, password]);
       
-      const canGoNext = email && username && password && passwordRepeat;
+      const canGoNext = email && name && password && passwordRepeat;
     
       
     return(
@@ -103,16 +103,16 @@ const SignUpScreen =() => {
             <Text style={styles.title}>회원가입</Text>
             <TextInput
               style={styles.container}
-              onChangeText={onChangeuserName}
+              onChangeText={onChangename}
               placeholder="이름를 입력해주세요."
               placeholderTextColor="#666"
               importantForAutofill="yes"
               //autoComplete=""
               textContentType="emailAddress"
-              value={username}
+              value={name}
               returnKeyType="next"
               clearButtonMode="while-editing"
-              ref={usernameRef}
+              ref={nameRef}
               onSubmitEditing={() => emailRef.current?.focus()}
               blurOnSubmit={false}
             />

@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  name: '',
+  name: 'test',
   email: '',
+  
   accessToken: '',
 };
 const userSlice = createSlice({
@@ -14,8 +15,7 @@ const userSlice = createSlice({
       state.name = action.payload.name;
       state.accessToken = action.payload.accessToken;
     },
-  },
+  },  
   extraReducers: builder => {},
 });
-
 export default userSlice;
