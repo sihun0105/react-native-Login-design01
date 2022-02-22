@@ -9,9 +9,8 @@ javac 1.8.0_211<br>
 Android Debug Bridge version 1.0.41<br>
 Version 31.0.3-7562133<br>
 #사용방법<br/>
-1.npm install<br/>
-2.cd back => npm start //터미널1<br>
-3.root폴더-run android //터미널2<br/>
+1.cd back => npm install => npm start //터미널1<br>
+2.root폴더 => npm install => run android //터미널2<br/>
 
 ![화면 캡처 2022-01-23 175703](https://user-images.githubusercontent.com/80196373/150671817-d305f695-89fe-4da9-b500-3eaa817871b5.png)
 ![화면 캡처 2022-01-23 175533](https://user-images.githubusercontent.com/80196373/150671818-7acb27dd-ac94-4e91-a163-a1e69411e552.png)
