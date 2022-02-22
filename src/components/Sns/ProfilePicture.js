@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-import Colors from '../config/Colors';
-
+import Colors from '../../config/Colors';
 function ProfilePicture({imageUrl, size = 70}) {
   return (
     <View style={[styles.container, {width: size + 10, height: size + 10}]}>

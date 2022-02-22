@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, FlatList} from 'react-native';
-import Users from '../data/users';
-import Story from '../components/Story';
-import Colors from '../config/Colors';
-
+import Users from '../../data/users';
+import Story from './Story';
+import Colors from '../../config/Colors';
 function Stories(props) {
   return (
     <FlatList

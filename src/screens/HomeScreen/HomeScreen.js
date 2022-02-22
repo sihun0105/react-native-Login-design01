@@ -1,11 +1,11 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
-import Screen from '../../components/Screen';
-import Stories from '../../components/Stories';
+import Screen from '../../components/Sns/Screen';
+import Stories from '../../components/Sns/Stories';
 import Posts from '../../components/posts/Posts';
 import UserPosts from '../../data/posts';
-import HomeHeader from '../../components/HomeHeader';
+import HomeHeader from '../../components/Sns/HomeHeader';
 
 function HomeScreen(props) {
   return (

@@ -41,12 +41,14 @@ const connection = mysql.createPool({
 
 app.get('/sihun', function(req, res,next){
   connection.query('SELECT * FROM test', function (error, results, fields) {
-      // If some error occurs, we throw an error.
-          if (error) throw error;
-          // Getting the 'response' from the database and sending it to our route. This is were the data is.
-          //res.send(results);
+          if (error) res.send(error);
           res.send(results);
-          console.log(results[0].ID);
+  });
+});
+app.get('/signup', function(req, res,next){
+  connection.query('SELECT * FROM test', function (error, results, fields) {
+          if (error) res.send(error);
+          res.send(results);
   });
 });
 app.get("/idplz", (req,res)=>{
@@ -143,7 +145,7 @@ app.post("/user", (req, res, next) => {
     password: req.body.password,
     name: req.body.name,
   };
-
+  //connection.query('insert into test (name, id, password) values ("' + users.name + '","' + email + '","' + passwd + '")');
   return res.json({
     data: {
       email: req.body.email,

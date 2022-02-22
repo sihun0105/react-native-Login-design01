@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, TouchableWithoutFeedback} from 'react-native';
-import AppText from '../AppText';
+import AppText from '../Sns/AppText';
 import ADIcon from 'react-native-vector-icons/AntDesign';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';

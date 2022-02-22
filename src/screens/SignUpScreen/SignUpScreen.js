@@ -1,4 +1,4 @@
-import React,{useState,useCallback,useRef} from 'react'
+import React,{useState,useCallback,useRef, useEffect} from 'react'
 import {View , Text , StyleSheet, ScrollView,Pressable,Alert,ActivityIndicator,TextInput} from 'react-native';
 import CustomButton from '../../components/CustomButton';
 import SocialSigninButton from '../../components/SocialSigninButtons/SocialSigninButton';
@@ -7,6 +7,10 @@ import axios from 'axios';
 import Config from 'react-native-config'; 
 
 const SignUpScreen =() => {
+  //useEffect(()=>{
+  //  axios.get(`${Config.API_URL}/sihun`)
+  //  .then(res=>console.log(res))
+  //})
     const [loading, setLoading] = useState(false);
     const [name,setname] = useState('');
     const [password,setPassword] = useState('');

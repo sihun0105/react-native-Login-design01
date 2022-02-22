@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import ProfilePicture from '../ProfilePicture';
+import ProfilePicture from '../Sns/ProfilePicture';
 import Entypo from 'react-native-vector-icons/Entypo';
-import AppText from '../AppText';
+import AppText from '../Sns/AppText';
 import Colors from '../../config/Colors';
 
 function Header({imageUrl, name, location}) {

@@ -1,7 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import userSlice from '../../../slices/user';
 import { RootState } from '../../../store/reducer';
 
 import {
