@@ -1,8 +1,13 @@
-import React, {Component} from 'react';
+import React, { useState, useCallback, useEffect } from 'react'
 import {StyleSheet, Text, View} from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat'
 
 const ChatList = () => {
-    return (
+  const [messages, setMessages] = useState([]);
+
+
+
+  return (
       <View style={styles.container}>
         <View style={styles.header} />
         <View style={styles.content}>
