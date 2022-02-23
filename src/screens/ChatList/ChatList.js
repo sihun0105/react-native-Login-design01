@@ -4,37 +4,34 @@ import { GiftedChat } from 'react-native-gifted-chat'
 
 const ChatList = () => {
   const [messages, setMessages] = useState([]);
+ useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ])
+  }, [])
 
+  const onSend = useCallback((messages = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, [])
 
 
   return (
-      <View style={styles.container}>
-        <View style={styles.header} />
-        <View style={styles.content}>
-
-          <View style={styles.elem}>
-            <View style={styles.userInfo}>
-              <View style={styles.profile} />
-              <Text style={styles.name}>ㅇㅇㅇ</Text>
-            </View>
-            <View style={styles.userComment}>
-              <Text>ㅁㄴㅇㄹ</Text>
-            </View>
-          </View>
-
-          <View style={styles.elem}>
-            <View style={styles.userInfo}>
-              <View style={styles.profile} />
-              <Text style={styles.name}>ㅇㅇㅇ</Text>
-            </View>
-            <View style={styles.userComment}>
-              <Text>ㅁㄴㅇㄹ</Text>
-            </View>
-          </View>
-
-        </View>
-        <View style={styles.footer} />
-      </View>
+    <GiftedChat
+    messages={messages}
+    onSend={messages => onSend(messages)}
+    user={{
+      _id: 1,
+    }}
+  />
     );
   };
 
